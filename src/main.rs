@@ -17,7 +17,7 @@ impl parse_args
         }
         let search_string = args[1].clone();
         let filename = args[2].clone();
-        parse_args {query: search_string, filename:filename}
+        parse_args {query: search_string.to_lowercase(), filename:filename}
     }
 }
 fn main() {
@@ -46,7 +46,7 @@ fn search(query:&String, filename:String) -> Vec<String>
 
     for line in contents.lines()
     {
-        if line.contains(query)
+        if line.to_lowercase().contains(query)
         {
             results.push(line.to_string());
         }
